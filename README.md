@@ -9,4 +9,4 @@ Bootcamp: Playwright with JavaScript and TypeScript.
 
 ## How to run
 node qa-automation-day1/wallet.js
-node qa-automation-day2/wallet.js
+node qa-automation-day2/validator.js
