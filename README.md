@@ -8,5 +8,5 @@ Bootcamp: Playwright with JavaScript and TypeScript.
 - day2/ : control flow, eSewa validator
 
 ## How to run
-node qa-automation-day1/wallet.js
-node qa-automation-day2/validator.js
+- node qa-automation-day1/wallet.js
+- node qa-automation-day2/validator.js
