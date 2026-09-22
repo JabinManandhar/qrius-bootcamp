@@ -1,0 +1,13 @@
+# Dependencies: reinstall with npm install
+node_modules/
+
+# Playwright output: regenerated every run
+test-results/
+playwright-report/
+
+# Secrets: NEVER commit these
+.env
+*.key
+
+# Build output, OS junk, logs
+dist/  .DS_Store  *.log
