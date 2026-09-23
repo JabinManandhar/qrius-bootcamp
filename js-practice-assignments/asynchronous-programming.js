@@ -24,8 +24,6 @@ function delay(ms) {
 
 delay(10000).then(() => console.log("Hi")); //Output: waits 1 second, then prints Hi
 
-// // Hint: Return new Promise(resolve => setTimeout(resolve, ms)). You wrap setTimeout so it becomes awaitable.
-
 // // ================================================================
 // // Q27. Rewrite with async/await
 // // Task: Using your delay(ms) from Q26, write an async function run() that logs 'Start', waits 1 second, then logs 'End'.
@@ -42,14 +40,11 @@ async function run() {
 
 run(); //Output: prints "Start", waits for 1s and then prints "End"
 
-// // Hint: Mark the function async, then use: await delay(1000) between the two logs. await pauses only inside the async function.
-
 // // ================================================================
 // // Q28. Simulated Fetch
 // // Task: Write fetchUser(id) that returns a Promise resolving to { id, name: 'User' + id } after a 500ms delay. Consume it with async/await inside a getUser() function that logs the result.
 // // Example:
 // // getUser()  // (after 500ms) { id: 1, name: 'User1' }
-// // Hint: Reuse the Promise+setTimeout pattern, but call resolve(theObject). In getUser, do const user = await fetchUser(1).
 
 function fetchUser(id) {
   return new Promise((resolve) => {
@@ -85,8 +80,6 @@ loadAll(); //Output: return an array of objects with id and name for all 3 users
 // ]
 
 // // Note: Until now, we only have handled Promises in case of "resolved".
-
-// // Hint: await Promise.all([fetchUser(1), fetchUser(2), fetchUser(3)]). Starting them together (not awaiting one at a time) is what makes it parallel.
 
 // // ================================================================
 // // Q30. Handle a Rejection
@@ -130,8 +123,6 @@ function withTimeout(promise, ms) {
 
 withTimeout(delay(3000), 1000).catch((result) => console.log(result)); //Output:Timed out
 // // In this case, we already know the promise will be rejected so "then" not used  here. But, otherwise use .then to handle the resolve state.
-
-// // Hint: Race two promises: Promise.race([promise, timeoutPromise]). The timeout promise is a setTimeout that calls reject('Timed out').
 
 // // ================================================================
 // // Q32. Retry with Recovery
