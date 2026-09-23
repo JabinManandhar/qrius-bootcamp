@@ -84,7 +84,6 @@ loadAll(); //Output: return an array of objects with id and name for all 3 users
 //   { id: 3, name: 'User3' }
 // ]
 
-
 // // Note: Until now, we only have handled Promises in case of "resolved".
 
 // // Hint: await Promise.all([fetchUser(1), fetchUser(2), fetchUser(3)]). Starting them together (not awaiting one at a time) is what makes it parallel.
@@ -110,7 +109,6 @@ async function safe() {
 
 safe(); //handles rejected Promise state with error message using try/catch block
 // Output: Caught: Network failed
-
 
 // // ================================================================
 // // Q31. Timeout Wrapper
@@ -140,5 +138,37 @@ withTimeout(delay(3000), 1000).catch((result) => console.log(result)); //Output:
 // // Task: Write retry(fn, times) that calls the async function fn. If it rejects, try again — up to 'times' total attempts. If all attempts fail, re-throw the last error.
 // // Example:
 // // retry(flakyFetch, 3)  // resolves if any of 3 tries succeeds
+
+async function retry(fn, times) {
+  let error;
+  for (let i = 0; i < times; i++) {
+    try {
+      return await fn();
+    } catch (err) {
+      error = err;
+      console.log(`Attempt ${i + 1} failed ${err.message}`);
+    }
+  }
+  throw error;
+}
+
+let counter = 0;
+async function flakyFetch() {
+  counter++;
+  if (counter < 3) {
+    throw new Error("Network issue");
+  }
+  return `Successful on attempt number: ${counter} `;
+}
+
+retry(flakyFetch, 3)
+  .then((result) => console.log("Result:", result))
+  .catch((error) => console.log(`Error: ${error.message}`));
+
+// Output:
+/*  Attempt 1 failed Network issue
+Attempt 2 failed Network issue
+Result: Successful on attempt number: 3 
+ */
 
 // // Hint: Loop 'times' times inside an async function. Use try/catch around await fn(); on success return the result, on failure save the error and continue. After the loop, throw the saved error.
