@@ -16,3 +16,11 @@ Bootcamp: Playwright with JavaScript and TypeScript.
 
 - node qa-automation-day1/wallet.js
 - node qa-automation-day2/validator.js
+
+ *[To run .js files]*
+**Command**: `node <filename.js>`
+**Pre-requisites**: node and npm already installed
+
+*[To run .ts files]*
+**Command**: `tsx <filename.ts>`
+**Pre-requisites**: typescript already installed, install tsx to run ts file directly without any build step
